@@ -1,6 +1,6 @@
 # H'Style 精品服飾網站
 
-**Keyword: ASP.NET MVC、ASP.NET Core、WebAPi、三層式架構(表現層、業務邏輯層、資料存取層)、Vue3 composition API、前後端分離**  
+**Keyword: ASP.NET MVC、ASP.NET Core、WebAPI、三層式架構(表現層、業務邏輯層、資料存取層)、Vue3 composition API、前後端分離**  
 - 此為多人合作專案(6人)，專案僅供資展國際專題發表及練習使用，無任何商業用途，如有侵權煩請告知
 - 專案理念: 針對中高端客群精品消費需求所設計，向消費者提供更全方位的服務，如個人專屬推薦、建立自媒體及客戶關係的管理等
 1. 具前後台，後台為管理用途，前台則是給消費者使用
@@ -43,6 +43,7 @@
 * 訂單操作資料表不與其他表作關聯，以達確切紀錄的功用
 #### ＊另負責後台主頁呈現和_Layout.cshtml套版
 ## 前台
+* WebAPI以swagger UI及postman做測試，且以RESTful API風格開發
 * 利用axios套鍵處理AJAX，並以Vue3 composition API方式編寫
 * 在Controller以private存取修飾詞用於自資料庫取回或不可變的資料，保護數據的封裝性，讓外部的使用者不能直接訪問這些數據，以建構子注入（Constructor Injection）方式來初始化
 * 將會被重複使用的元素封裝成組件，並在不同的地方使用不同的屬性值進行呈現，達成組件化，以v-for呈現多筆
