@@ -12,7 +12,7 @@
 <h2 class="text-center">修改訂單</h2>
 
 <div class="text-lg-right">
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">取消訂單</button>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" id="cancel">取消訂單</button>
     <button type="button" class="btn btn-warning" id="ship">一鍵出貨</button>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -268,6 +268,10 @@
             let dateStringWithTime = moment(now).format('YYYY-MM-DD HH:mm');
             $('#shippeddate').val(dateStringWithTime)
         })
+
+        if ($('#status').val()!="待出貨") {
+            $('#ship').hide();
+        }
 
         $('#exampleModal').on('click', '#cancel', function () {
             let object = {

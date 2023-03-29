@@ -56,31 +56,11 @@ namespace H2StyleStore.Controllers
 		{
 
 			ViewBag.Status_order = orderService.GetStatus();
-			//ViewBag.CreatetimeSortParm = sortOrder == "date" ? "date_desc" : "date";
-			//ViewBag.TotalSortParm = sortOrder == "total" ? "total_desc" : "";
 
 			var data = orderService.Load();
 
-			//可排序
-			switch (sortOrder)
-			{
-
-				//	case "date":
-				//		data = data.OrderBy(o => o.CreatedTime);
-				//		break;
-				//	case "date_desc":
-				//		data = data.OrderByDescending(o => o.CreatedTime);
-				//		break;
-				//	case "total":
-				//		data = data.OrderBy(o => o.Total);
-				//		break;
-				//	case "total_desc":
-				//		data = data.OrderByDescending(o => o.Total);
-				//		break;
-				default:
-					data = data.OrderByDescending(o => o.Order_id);
-					break;
-			}
+			//依orderID排序
+			data = data.OrderByDescending(o => o.Order_id);
 
 
 			//可篩選
@@ -217,7 +197,7 @@ namespace H2StyleStore.Controllers
 			bool enableSSL = true;
 			//填入寄送方email和密碼
 			string emailFrom = "h11830123@gmail.com";
-			string password = "yetzwlvxoejigxns";
+			string password = "yetzwlvxoejigxns"; 
 			//收信方email 可以用逗號區分多個收件人
 			string emailTo = member.Email;
 			//主旨

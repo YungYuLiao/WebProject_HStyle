@@ -37,58 +37,6 @@ namespace HStyleApi.Controllers
             }
         }
 
-		[HttpGet("test")]
-		public dynamic GetTags(int product_id)
-		{
-			var orders = _db.Orders.Where(x => x.MemberId == _member_id).OrderByDescending(x => x.OrderId).ToList().Take(5);
-
-			var productsId = orders.Select(x => x.OrderDetails.Select(x => x.ProductId)).ToArray();
-			List<int> Ordersproducts = new List<int>();
-			foreach (var order in productsId)
-			{
-				foreach (var pId in order)
-				{
-					Ordersproducts.Add(pId);
-				}
-			}
-			var dbPro = _db.Products.Include(x => x.Tags);
-
-
-			var tags = new List<int>();
-			foreach (var product in Ordersproducts)
-			{
-				var ts = dbPro.Where(x => x.ProductId == product).SingleOrDefault().Tags;
-				foreach (var t in ts)
-				{
-					tags.Add(t.Id);
-				}
-			}
-
-			Dictionary<int, int> tagsCount = new Dictionary<int, int>();
-
-			foreach (var id in tags)
-			{
-				if (tagsCount.ContainsKey(id))
-				{
-					tagsCount[id]++;
-				}
-				else
-				{
-					tagsCount.Add(id, 1);
-				}
-			}
-
-			var maxValueKey = tagsCount.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
-
-			var products = dbPro.Where(x => !Ordersproducts.Contains(x.ProductId));
-
-			
-
-
-			return products;
-
-		}
-
 		// 商品總覽(全部商品)
 		[HttpGet("products")]
 		public ActionResult<ProductDto> LoadProducts([FromQuery] string? keyword)

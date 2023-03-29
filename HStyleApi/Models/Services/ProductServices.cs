@@ -31,7 +31,6 @@ namespace HStyleApi.Models.Services
 
 		public (bool, string) CreateComment(PCommentPostDTO dto, int orderId, int productId)
 		{
-			//TODO驗證
 
 			_repo.CreateComment(dto, orderId, productId);
 
@@ -184,7 +183,6 @@ namespace HStyleApi.Models.Services
 
 		public IEnumerable<ProductDto> GetRecommendByWeather(List<int> temp)
 		{
-			//TODO 如果取出超過三件商品 要randomSelect
 			var weatherdescription = TransWeather(temp);
 			var products_id = _repo.GetProductsByTagsName(weatherdescription);
 
@@ -240,12 +238,16 @@ namespace HStyleApi.Models.Services
 
 		public IEnumerable<ProductDto> GetNewProducts(List<string> tagsName)
 		{
-			//TODO 如果取出超過三件商品 要randomSelect
 			var products_id = _repo.GetProductsByTagsName(tagsName);
+			List<int> recommendlist = new List<int>();
 
 			IEnumerable<ProductDto> products;
-			products = _repo.GetProducts(products_id);
 
+			int targetnumber = 3;
+			recommendlist = RandomSelect(products_id, targetnumber);
+
+			products = _repo.GetProducts(recommendlist);
+			
 			return products;
 		}
 

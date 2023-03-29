@@ -54,15 +54,6 @@
             </tr>
         }
     </table>
-
-    @{ int total = 0;}
-    @foreach (var item in Model)
-    {
-        total += @item.SubTotal;
-    }
-    <div class="col-md-6" style="font-weight:bold ;">
-        <div class="col-md-12">合計:@total 元</div>
-    </div>
 </div>
 <a href="../">
     <i class="fa-solid fa-rotate-left donotprint ml-2 mt-5">  回列表</i>
