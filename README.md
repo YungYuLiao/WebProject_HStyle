@@ -61,8 +61,9 @@
   -- UI設計：以v-if和v-else搭配mouseover和mouseout呈現滑鼠進入時照片變更的效果，並利用css中的hover實踐照片放大的效果
 2. 以Vue做前端篩選及排序，語法分別為`filter`和`sort`，此做法是為提升效能，以減少拜訪資料庫的次數，在顏色篩選選項上將資料庫取得的規格中的顏色陣列以`flatMap()`語法扁平化，再以`new Set()`方式獲得唯一值的集合，最後使用`Array.from()`從 Set 對象創建一個新陣列
 3. 商品收藏: 因需在不同組件間傳遞，以mitt套件實現跨模組的溝通功能　　
-  ![Recording 2023-03-29 at 19 19 46](https://user-images.githubusercontent.com/115922701/228518994-79c2fec1-ad42-4017-8292-1a79e6fda142.gif)　　
-4. 單品瀏覽: 使用Swiper套件和VueEasyLightbox套件，分別呈現照片垂直輪播功能及點按照片後放大預覽的效果，以v-if和v-else方式切換商品描述和商品評論
+4. 單品瀏覽: 使用Swiper套件和VueEasyLightbox套件，分別呈現照片垂直輪播功能及點按照片後放大預覽的效果，以v-if和v-else方式切換商品描述和商品評論　　
+![Recording 2023-03-29 at 19 19 46](https://user-images.githubusercontent.com/115922701/228518994-79c2fec1-ad42-4017-8292-1a79e6fda142.gif)　　
+
 5. 商品評論:　　 
   ![image](https://user-images.githubusercontent.com/115922701/228519977-e0045a75-dfb2-4d70-8c5b-0dfa6e600f2a.png)　　
 * 由訂單查詢才能點選評論商品，此作法可避免未購買過商品的人做評論，以保評論的真實性評論
